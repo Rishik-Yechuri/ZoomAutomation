@@ -5,7 +5,7 @@ from datetime import datetime
 
 self.__display = Xlib.display.Display()
 current_time = ''
-whichDay = 'B'
+whichDay = 'A'
 dayFlipped = False
 listOfHolidays = ["01/18","02/15","03/08","03/09","03/10","03/11","03/12","04/02","04/05","04/23","05/22","05/31"]
 weatherDaysDeactivated = 0
@@ -63,10 +63,13 @@ def joinClass(code, password, starttime):
 
 def changeDayType():
     global dayFlipped
-    if current_time == "00:00" and dayFlipped == False:
+    global whichDay
+    whichDayOfficial = open('Day', 'r')
+    whichDay = whichDayOfficial.read()
+    whichDayOfficial.close()
+    if True:#current_time == "00:00" and dayFlipped == False:
         dayFlipped = True
-        global whichDay
-        if datetime.today().weekday() < 5:
+        if True:#datetime.today().weekday() < 4 or datetime.today().weekday() == 6:
             valueOfToday: str = str(datetime.today().month) + "/" + str(datetime.today().day)
             switchDay = True
             for day in listOfHolidays:
@@ -82,9 +85,11 @@ def changeDayType():
                     whichDay = 'A'
             else:
                 whichDay = 'H'
-            print(whichDay)
     if current_time == "00:01":
         dayFlipped = False
+    whichDayOfficial = open('Day','w')
+    whichDayOfficial.write(whichDay)
+    whichDayOfficial.close()
 
 while True:
     now = datetime.now()
@@ -104,5 +109,5 @@ while True:
         joinClass('8713292954', "NzQrRUJlbENUWFdobkIvWkQ5QlFkUT09", "11:20")
 
     # Test Links
-    #joinClass('96075960965', "", "12:40")
+    joinClass('99084651314', "", "22:40")
     pyautogui.sleep(12)
