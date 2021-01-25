@@ -13,33 +13,16 @@ weatherDaysDeactivated = 0
 
 def joinClass(code, password, starttime):
     if starttime == current_time:
-        # pyautogui.click(70, 1060)
-        # pyautogui.sleep(4)
-        #pyautogui.click(970, 380)
+        pyautogui.click(pyautogui.locateCenterOnScreen('zoom.png'))
+        pyautogui.sleep(3)
         pyautogui.click(pyautogui.locateCenterOnScreen('join.png'))
         pyautogui.sleep(1)
-        #pyautogui.click(970, 450)
-        #pyautogui.sleep(1)
-        # pyautogui.write(code)
-       # pyautogui.sleep(1)
-        #pyautogui.click(970, 410)
-        #pyautogui.sleep(1)
-        # pyautogui.write(code)
-        #pyautogui.sleep(1)
-        #pyautogui.click(970, 370)
-        #pyautogui.sleep(1)
-        #pyautogui.click(970, 335)
-        #pyautogui.sleep(1)
-        #pyautogui.click(970, 318)
-        #pyautogui.sleep(1)
-        # pyautogui.click(970,272)
-        # pyautogui.sleep(1)
         pyautogui.click(pyautogui.locateCenterOnScreen('meetingid.png'))
         pyautogui.sleep(1)
         pyautogui.write(code)
         pyautogui.sleep(1)
         pyautogui.press('enter')
-        pyautogui.sleep(2)
+        pyautogui.sleep(5)
         pyautogui.press('esc')
         pyautogui.sleep(3)
         if len(password) > 1:
@@ -47,16 +30,21 @@ def joinClass(code, password, starttime):
             pyautogui.sleep(1)
             pyautogui.press('enter')
         pyautogui.sleep(480)
+        #pyautogui.sleep(8)
         pyautogui.press('esc')
         pyautogui.sleep(1)
         pyautogui.press('esc')
         pyautogui.sleep(5010)
-        pyautogui.click(pyautogui.locateCenterOnScreen('leave.png'))
+        #pyautogui.sleep(15)
+        #pyautogui.click(pyautogui.locateCenterOnScreen('leave.png'))
+        pyautogui.click(1900,1060)
         #pyautogui.click(1900, 1060)
         pyautogui.sleep(2)
         pyautogui.press('esc')
         pyautogui.sleep(1)
         pyautogui.press('esc')
+        pyautogui.sleep(4)
+        pyautogui.click(pyautogui.locateCenterOnScreen('notstarted.png'))
         # pyautogui.sleep(6)
         # pyautogui.click(1790, 18)
 
@@ -67,9 +55,9 @@ def changeDayType():
     whichDayOfficial = open('Day', 'r')
     whichDay = whichDayOfficial.read()
     whichDayOfficial.close()
-    if True:#current_time == "00:00" and dayFlipped == False:
+    if current_time == "00:00" and dayFlipped == False:
         dayFlipped = True
-        if True:#datetime.today().weekday() < 4 or datetime.today().weekday() == 6:
+        if datetime.today().weekday() < 4 or datetime.today().weekday() == 6:
             valueOfToday: str = str(datetime.today().month) + "/" + str(datetime.today().day)
             switchDay = True
             for day in listOfHolidays:
@@ -109,5 +97,9 @@ while True:
         joinClass('8713292954', "NzQrRUJlbENUWFdobkIvWkQ5QlFkUT09", "11:20")
 
     # Test Links
-    joinClass('99084651314', "", "22:40")
+    #joinClass('8713292954', "NzQrRUJlbENUWFdobkIvWkQ5QlFkUT09", "18:05")
+    #joinClass('92646947994', "", "18:06")
+    #joinClass('8713292954', "NzQrRUJlbENUWFdobkIvWkQ5QlFkUT09", "18:07")
+    #joinClass('92646947994', "", "18:08")
     pyautogui.sleep(12)
+
